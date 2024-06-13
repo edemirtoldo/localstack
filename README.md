@@ -186,20 +186,33 @@ aws_access_key_id = giropops
 aws_secret_access_key = strigus
 ```
 
-No caso da LocalStack conter qualquer ID e senha
+No caso da LocalStack as credenciais de acesso podem conter qualquer ID e senha
 
 #### Vamos executar Comandos Básicos do S3
 
-- Listar Buckets
+**- Listar Buckets**
 Para listar todos os buckets em sua conta S3:
 
 ```bash
-aws s3 ls --profile localstack --endpoint-url http://localhost:4566
+aws --profile localstack --endpoint-url http://localhost:4566 s3 ls
+```
+
+O comando realiza a seguinte operação:
+
+- Utiliza o perfil de configuração `localstack` que foi definido no arquivo de configuração do AWS CLI. Este perfil contém credenciais e outras configurações que podem ser diferentes do perfil padrão.
+
+- Conecta-se ao endpoint `http://localhost:4566` em vez dos endpoints da AWS. Este endpoint é provavelmente uma instância do LocalStack ou outro emulador de serviços AWS rodando localmente, o que permite testar interações com a AWS sem usar os serviços reais na nuvem.
+
+- Executa o comando `s3 ls`, que lista todos os buckets S3 disponíveis no endpoint especificado (neste caso, os buckets gerenciados pelo LocalStack).
+
+**- Criar um Bucket**
+
+```bash
+aws --profile localstack --endpoint-url http://localhost:4566 s3 mb s3://giropops-bucket
 ```
 
 
-Criar um Bucket
-Para criar um novo bucket (lembre-se de que o nome do bucket deve ser globalmente único):
+
 
 bash
 Copiar código
