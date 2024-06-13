@@ -354,13 +354,45 @@ terraform plan
 terraform apply --auto-approve
 ```
 
-Vamos destruir
+Vamos consultar os dados do EC2 criado
+
+Descreve uma ou mais instâncias EC2.
+
+```bash
+aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-instances 
+```
+
+Descreve um ou mais volumes EBS.
+
+```bash
+aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-volumes
+```
+
+Descreve as interfaces de rede EC2.
+
+```bash
+aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-network-interfaces 
+```
+
+Descreve as regiões disponíveis.
+
+```bash
+aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-regions
+```
+
+Descreve os pares de chaves disponíveis.
+
+```bash
+aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-key-pairs
+```
+
+### Vamos destruir o terraform
 
 ```bash
 terraform destroy --auto-approve
 ```
 
-Por fim vamos dar stop no LocalStack
+### Por fim vamos dar stop no LocalStack
 
 ```bash
 localstack stop    
