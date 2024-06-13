@@ -249,7 +249,7 @@ Resposta do comando:
 2024-06-13 10:29:16          0 testes
 ```
 
-Vamos remover o arquivo testes do bucket
+**- Vamos remover o arquivo testes do bucket**
 
 ```bash
 aws --profile localstack --endpoint-url http://localhost:4566 s3 rm s3://giropops-bucket/testes
@@ -267,7 +267,7 @@ Verificando a exclusão do arquivo testes do bucket
 aws --profile localstack --endpoint-url http://localhost:4566 s3 ls s3://giropops-bucket
 ```
 
-Vamos excluir o bucket s3://giropops-bucket
+**- Vamos excluir o bucket s3://giropops-bucket**
 
 ```bash
 aws --profile localstack --endpoint-url http://localhost:4566 s3 rb s3://giropops-bucket
@@ -279,7 +279,7 @@ Resposta do comando:
 remove_bucket: giropops-bucket
 ```
 
-## Vamos testar o terraform no LocalStack
+### Vamos testar o terraform no LocalStack
 
 [Docs Terraform config - link](https://docs.localstack.cloud/user-guide/integrations/terraform/#manual-configuration)
 
