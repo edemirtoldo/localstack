@@ -249,7 +249,7 @@ Resposta do comando:
 Vamos remover o arquivo testes do bucket
 
 ```bash
-➜  ~ aws --profile localstack --endpoint-url http://localhost:4566 s3 rm s3://giropops-bucket/testes
+aws --profile localstack --endpoint-url http://localhost:4566 s3 rm s3://giropops-bucket/testes
 ```
 
 Resposta do comando:
