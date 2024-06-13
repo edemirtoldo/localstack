@@ -422,4 +422,5 @@ Resposta do comando:
 
 # FIM
 
+> [!IMPORTANT]
 > Documentação baseada no video SIMULANDO AWS COM LOCALSTACK E TERRAFORM: GUIA COMPLETO da LinuxtTips - https://www.youtube.com/watch?v=0nU9yvqg2Rw
