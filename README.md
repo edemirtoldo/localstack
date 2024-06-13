@@ -155,7 +155,8 @@ localstack logs
 
 Resposta do comando
 
-`LocalStack version: 3.4.1.dev
+```bash
+LocalStack version: 3.4.1.dev
 LocalStack Docker container name: localstack-main
 LocalStack Docker container id: 8bacdc4c848a
 LocalStack Docker image sha: sha256:2e5eece2f1f55715d7fed4c2402acaba13260c80a1c53f5f21cdb08390c11ee0
@@ -163,8 +164,8 @@ LocalStack build date: 2024-06-12
 LocalStack build git hash: 2b9cbc763
 
 2024-06-13T12:33:09.608  INFO --- [  MainThread] localstack.utils.bootstrap : Execution of "start_runtime_components" took 607.29ms
-Ready.`
-
+Ready.
+```
 
 #### Vamos preparar as credenciais do aws cli no localstack
 
@@ -190,6 +191,7 @@ No caso da LocalStack as credenciais de acesso podem conter qualquer ID e senha
 #### Vamos executar Comandos Básicos do S3
 
 **- Listar Buckets**
+
 Para listar todos os buckets em sua conta S3:
 
 ```bash
@@ -240,7 +242,9 @@ Vamos verificar se o arquivo foi copiado
 
 Resposta do comando:
 
-`2024-06-13 10:29:16          0 testes`
+```bash
+2024-06-13 10:29:16          0 testes
+```
 
 Vamos remover o arquivo testes do bucket
 
@@ -250,7 +254,9 @@ Vamos remover o arquivo testes do bucket
 
 Resposta do comando:
 
-`delete: s3://giropops-bucket/testes`
+```bash
+delete: s3://giropops-bucket/testes
+```
 
 Verificando a exclusão do arquivo testes do bucket
 
@@ -264,35 +270,108 @@ Vamos excluir o bucket s3://giropops-bucket
 aws --profile localstack --endpoint-url http://localhost:4566 s3 rb s3://giropops-bucket
 ```
 
+Resposta do comando:
+
+```bash
+remove_bucket: giropops-bucket
+```
+
+## Vamos testar o terraform no LocalStack
 
 
 
-aws s3 cp caminho/para/o/arquivo.ext s3://nome-do-seu-bucket/
-
-Em outro terminal vamos fazer o clone do repositorio.
+Vamos fazer o clone do repositorio do [Badtux da LinuxTips](https://github.com/badtuxx/terraform-101).
 
 ```bash
 git clone git@github.com:badtuxx/terraform-101.git
 ```
 
+Vamos acessar o diretorio
+
 ```bash
 cd terraform-101/terraform/main
 ```
 
+Vamos corrigir o arquivo `main.tf`
 
-aws s3 ls --profile localstack --endpoint-url=http://localhost:4566
+O arquivo está com o ip do vpc errado deve ficar como esta abaixo:
 
-➜  localstack 
+```bash
+module "vpc" {
+  source         = "./modules/vpc"
+  vpc_cidr_block = "10.0.0.0/16"
+}
+```
 
-➜  ~ localstack stop    
+Vamos criar o arquivo `providers.tf`
+
+Com o seguinte conteudo
+
+```bash
+provider "aws" {
+  access_key = "giropops"
+  secret_key = "strigus"
+  region     = "us-east-1"
+
+  s3_use_path_style           = true
+  skip_credentials_validation = true
+  skip_metadata_api_check     = true
+  skip_requesting_account_id  = true
+
+  endpoints {
+    apigateway      = "http://localhost:4566"
+    apigatewayv2    = "http://localhost:4566"
+    cloudformation  = "http://localhost:4566"
+    cloudwatch      = "http://localhost:4566"
+    dynamodb        = "http://localhost:4566"
+    ec2             = "http://localhost:4566"
+    es              = "http://localhost:4566"
+    elasticache     = "http://localhost:4566"
+    firehose        = "http://localhost:4566"
+    iam             = "http://localhost:4566"
+    kinesis         = "http://localhost:4566"
+    lambda          = "http://localhost:4566"
+    rds             = "http://localhost:4566"
+    route53         = "http://localhost:4566"
+    redshift        = "http://localhost:4566"
+    s3              = "http://localhost:4566"
+    secretsmanager  = "http://localhost:4566"
+    ses             = "http://localhost:4566"
+    sns             = "http://localhost:4566"
+    sqs             = "http://localhost:4566"
+    ssm             = "http://localhost:4566"
+    stepfunctions   = "http://localhost:4566"
+    sts             = "http://localhost:4566"
+  }
+}
+```
+
+Vamos rodar
+
+```bash
+terraform init
+terraform plan
+terraform apply --auto-approve
+```
+
+Vamos destruir
+
+```bash
+terraform destroy --auto-approve
+```
+
+Por fim vamos dar stop no LocalStack
+
+```bash
+localstack stop    
+```
+
+Resposta do comando:
+
+```bash
 container stopped: localstack-main
-➜  ~ 
+```
 
-
--------
-
-Rodando comandos
-
-Terraform
+# FIM
 
 > Documentação baseada no video SIMULANDO AWS COM LOCALSTACK E TERRAFORM: GUIA COMPLETO da LinuxtTips - https://www.youtube.com/watch?v=0nU9yvqg2Rw
