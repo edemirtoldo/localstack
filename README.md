@@ -404,6 +404,22 @@ Resposta do comando:
 container stopped: localstack-main
 ```
 
+Vamos confirmar que o LocalStack está parado
+
+```bash
+localstack status
+```
+
+Resposta do comando:
+
+```bash
+┌─────────────────┬───────────────────────────────────────────────────────┐
+│ Runtime version │ 3.4.1.dev                                             │
+│ Docker image    │ tag: latest, id: 2e5eece2f1f5, 📆 2024-06-12T16:04:43 │
+│ Runtime status  │ ✖ stopped                                             │
+└─────────────────┴───────────────────────────────────────────────────────┘
+```
+
 # FIM
 
 > Documentação baseada no video SIMULANDO AWS COM LOCALSTACK E TERRAFORM: GUIA COMPLETO da LinuxtTips - https://www.youtube.com/watch?v=0nU9yvqg2Rw
