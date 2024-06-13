@@ -153,7 +153,7 @@ Resposta do comando
 Vamos verificar os logs
 
 ```bash
-localstack logs    
+localstack logs
 ```
 
 Resposta do comando
@@ -264,7 +264,7 @@ delete: s3://giropops-bucket/testes
 Verificando a exclusão do arquivo testes do bucket
 
 ```bash
-aws --profile localstack --endpoint-url http://localhost:4566 s3 ls s3://giropops-bucket    
+aws --profile localstack --endpoint-url http://localhost:4566 s3 ls s3://giropops-bucket
 ```
 
 Vamos excluir o bucket s3://giropops-bucket
@@ -281,7 +281,7 @@ remove_bucket: giropops-bucket
 
 ## Vamos testar o terraform no LocalStack
 
-
+[Docs Terraform config - link](https://docs.localstack.cloud/user-guide/integrations/terraform/#manual-configuration)
 
 Vamos fazer o clone do repositorio do [Badtux da LinuxTips](https://github.com/badtuxx/terraform-101).
 
@@ -312,39 +312,38 @@ Com o seguinte conteudo
 
 ```bash
 provider "aws" {
-  access_key = "giropops"
-  secret_key = "strigus"
-  region     = "us-east-1"
-
-  s3_use_path_style           = true
+  access_key                  = "giropops"
+  secret_key                  = "strigus"
+  region                      = "us-east-1"
+  s3_use_path_style           = false
   skip_credentials_validation = true
   skip_metadata_api_check     = true
   skip_requesting_account_id  = true
 
   endpoints {
-    apigateway      = "http://localhost:4566"
-    apigatewayv2    = "http://localhost:4566"
-    cloudformation  = "http://localhost:4566"
-    cloudwatch      = "http://localhost:4566"
-    dynamodb        = "http://localhost:4566"
-    ec2             = "http://localhost:4566"
-    es              = "http://localhost:4566"
-    elasticache     = "http://localhost:4566"
-    firehose        = "http://localhost:4566"
-    iam             = "http://localhost:4566"
-    kinesis         = "http://localhost:4566"
-    lambda          = "http://localhost:4566"
-    rds             = "http://localhost:4566"
-    route53         = "http://localhost:4566"
-    redshift        = "http://localhost:4566"
-    s3              = "http://localhost:4566"
-    secretsmanager  = "http://localhost:4566"
-    ses             = "http://localhost:4566"
-    sns             = "http://localhost:4566"
-    sqs             = "http://localhost:4566"
-    ssm             = "http://localhost:4566"
-    stepfunctions   = "http://localhost:4566"
-    sts             = "http://localhost:4566"
+    apigateway     = "http://localhost:4566"
+    apigatewayv2   = "http://localhost:4566"
+    cloudformation = "http://localhost:4566"
+    cloudwatch     = "http://localhost:4566"
+    dynamodb       = "http://localhost:4566"
+    ec2            = "http://localhost:4566"
+    es             = "http://localhost:4566"
+    elasticache    = "http://localhost:4566"
+    firehose       = "http://localhost:4566"
+    iam            = "http://localhost:4566"
+    kinesis        = "http://localhost:4566"
+    lambda         = "http://localhost:4566"
+    rds            = "http://localhost:4566"
+    redshift       = "http://localhost:4566"
+    route53        = "http://localhost:4566"
+    s3             = "http://s3.localhost.localstack.cloud:4566"
+    secretsmanager = "http://localhost:4566"
+    ses            = "http://localhost:4566"
+    sns            = "http://localhost:4566"
+    sqs            = "http://localhost:4566"
+    ssm            = "http://localhost:4566"
+    stepfunctions  = "http://localhost:4566"
+    sts            = "http://localhost:4566"
   }
 }
 ```
@@ -362,7 +361,7 @@ Vamos consultar os dados do EC2 criado
 Descreve uma ou mais instâncias EC2.
 
 ```bash
-aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-instances 
+aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-instances
 ```
 
 Descreve um ou mais volumes EBS.
@@ -374,7 +373,7 @@ aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-volum
 Descreve as interfaces de rede EC2.
 
 ```bash
-aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-network-interfaces 
+aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-network-interfaces
 ```
 
 Descreve as regiões disponíveis.
@@ -398,7 +397,7 @@ terraform destroy --auto-approve
 ### Por fim vamos dar stop no LocalStack
 
 ```bash
-localstack stop    
+localstack stop
 ```
 
 Resposta do comando:
