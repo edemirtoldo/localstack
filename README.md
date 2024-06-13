@@ -211,29 +211,66 @@ O comando realiza a seguinte operação:
 aws --profile localstack --endpoint-url http://localhost:4566 s3 mb s3://giropops-bucket
 ```
 
+O comando realiza a seguinte operação:
+
+- Utiliza o perfil de configuração `localstack` que foi definido no arquivo de configuração do AWS CLI. Este perfil contém credenciais e outras configurações que podem ser diferentes do perfil padrão.
+
+- Conecta-se ao endpoint `http://localhost:4566` em vez dos endpoints da AWS. Este endpoint é provavelmente uma instância do LocalStack ou outro emulador de serviços AWS rodando localmente, o que permite testar interações com a AWS sem usar os serviços reais na nuvem.
+
+- Executa o comando `s3 mb`, que cria um novo bucket no S3 com o nome `giropops-bucket`.
+
+**- Copiar arquivo para o bucket**
+
+Criar o arquivo
+
+```bash
+touch testes
+```
+Copiar o arquivo `testes` para o bucket `s3://giropops-bucket`
+
+```bash
+aws --profile localstack --endpoint-url http://localhost:4566 s3 cp testes s3://giropops-bucket
+```
+
+Vamos verificar se o arquivo foi copiado
+
+```bash
+➜  ~ aws --profile localstack --endpoint-url http://localhost:4566 s3 ls s3://giropops-bucket
+```
+
+Resultado do comando:
+
+```
+2024-06-13 10:29:16          0 testes
+```
+
+Vamos remover o arquivo testes do bucket
+
+```bash
+➜  ~ aws --profile localstack --endpoint-url http://localhost:4566 s3 rm s3://giropops-bucket/testes
+```
+
+Resposta do comando:
+
+```bash
+delete: s3://giropops-bucket/testes
+```
+
+Verificando a exclusão do arquivo testes do bucket
+
+```bash
+aws --profile localstack --endpoint-url http://localhost:4566 s3 ls s3://giropops-bucket    
+```
+
+Vamos excluir o bucket s3://giropops-bucket
+
+```bash
+aws --profile localstack --endpoint-url http://localhost:4566 s3 rb s3://giropops-bucket
+```
 
 
 
-bash
-Copiar código
-aws s3 mb s3://nome-do-seu-bucket
-Excluir um Bucket
-Para excluir um bucket vazio:
 
-bash
-Copiar código
-aws s3 rb s3://nome-do-seu-bucket
-Listar Objetos em um Bucket
-Para listar os objetos dentro de um bucket:
-
-bash
-Copiar código
-aws s3 ls s3://nome-do-seu-bucket
-Fazer Upload de Arquivo
-Para fazer upload de um arquivo para um bucket:
-
-bash
-Copiar código
 aws s3 cp caminho/para/o/arquivo.ext s3://nome-do-seu-bucket/
 
 Em outro terminal vamos fazer o clone do repositorio.
