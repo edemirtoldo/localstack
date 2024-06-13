@@ -1,4 +1,4 @@
-## Localstack
+## LocalStack
 
 ![localstack](https://github.com/edemirtoldo/localstack/blob/main/images/localstack.png)
 
