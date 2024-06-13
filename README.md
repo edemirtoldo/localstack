@@ -41,13 +41,13 @@
 #### Instalação
 
 Guia básico de instalação para começar a usar o LocalStack em sua máquina local.
-CLI LocalStack
+[Instalação](https://docs.localstack.cloud/getting-started/installation/)
 
 A maneira mais rápida de começar a usar o LocalStack é usando a CLI do LocalStack. Ele permite que você inicie o LocalStack a partir da linha de comando. Certifique-se de ter um dockerambiente de trabalho em sua máquina antes de prosseguir. Duvidas na instalação do `Docker` acesse: [Como instalar o Docker](https://docs.docker.com/engine/install/).
 
 A CLI inicia e gerencia o contêiner do Docker LocalStack. Para métodos alternativos de gerenciamento do contêiner LocalStack, consulte nossas [instruções de instalação alternativas](https://docs.localstack.cloud/getting-started/installation/#alternatives).
 
-Vamos baixar o binario da localstack
+Vamos baixar o binario da localstack para uso no Linux.
 
 ```bash
 curl -Lo localstack-cli-3.4.0-linux-amd64-onefile.tar.gz \
