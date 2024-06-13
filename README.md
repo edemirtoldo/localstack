@@ -237,7 +237,7 @@ aws --profile localstack --endpoint-url http://localhost:4566 s3 cp testes s3://
 Vamos verificar se o arquivo foi copiado
 
 ```bash
-➜  ~ aws --profile localstack --endpoint-url http://localhost:4566 s3 ls s3://giropops-bucket
+aws --profile localstack --endpoint-url http://localhost:4566 s3 ls s3://giropops-bucket
 ```
 
 Resposta do comando:
