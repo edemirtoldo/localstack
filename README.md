@@ -1,4 +1,4 @@
-<div style="text-align: center;">
+<div style="display: flex; justify-content: center;">
   <img src="https://github.com/edemirtoldo/localstack/blob/main/images/localstack.png" alt="Localstack">
 </div>
 
