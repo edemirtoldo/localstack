@@ -252,9 +252,7 @@ Vamos remover o arquivo testes do bucket
 
 Resposta do comando:
 
-```bash
-delete: s3://giropops-bucket/testes
-```
+`delete: s3://giropops-bucket/testes`
 
 Verificando a exclusão do arquivo testes do bucket
 
