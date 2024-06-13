@@ -155,8 +155,7 @@ localstack logs
 
 Resposta do comando
 
-```bash
-LocalStack version: 3.4.1.dev
+`LocalStack version: 3.4.1.dev
 LocalStack Docker container name: localstack-main
 LocalStack Docker container id: 8bacdc4c848a
 LocalStack Docker image sha: sha256:2e5eece2f1f55715d7fed4c2402acaba13260c80a1c53f5f21cdb08390c11ee0
@@ -164,8 +163,8 @@ LocalStack build date: 2024-06-12
 LocalStack build git hash: 2b9cbc763
 
 2024-06-13T12:33:09.608  INFO --- [  MainThread] localstack.utils.bootstrap : Execution of "start_runtime_components" took 607.29ms
-Ready.
-```
+Ready.`
+
 
 #### Vamos preparar as credenciais do aws cli no localstack
 
@@ -226,6 +225,7 @@ Criar o arquivo
 ```bash
 touch testes
 ```
+
 Copiar o arquivo `testes` para o bucket `s3://giropops-bucket`
 
 ```bash
@@ -238,11 +238,9 @@ Vamos verificar se o arquivo foi copiado
 ➜  ~ aws --profile localstack --endpoint-url http://localhost:4566 s3 ls s3://giropops-bucket
 ```
 
-Resultado do comando:
+Resposta do comando:
 
-```
-2024-06-13 10:29:16          0 testes
-```
+`2024-06-13 10:29:16          0 testes`
 
 Vamos remover o arquivo testes do bucket
 
