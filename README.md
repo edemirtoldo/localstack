@@ -107,11 +107,121 @@ Advanced:
   state       (Beta) Export, restore, and reset LocalStack state.
 ```
 
-Vamos iniciar o localstack
+**Vamos iniciar o localstack**
 
 ```bash
-localstack start
+localstack start -d
 ```
+Resposta do comando
+
+```bash
+     __                     _______ __             __
+    / /   ____  _________ _/ / ___// /_____ ______/ /__
+   / /   / __ \/ ___/ __ `/ /\__ \/ __/ __ `/ ___/ //_/
+  / /___/ /_/ / /__/ /_/ / /___/ / /_/ /_/ / /__/ ,<
+ /_____/\____/\___/\__,_/_//____/\__/\__,_/\___/_/|_|
+
+ 💻 LocalStack CLI 3.4.0
+ 👤 Profile: default
+
+[09:33:05] starting LocalStack in Docker mode 🐳                                      localstack.py:495
+           preparing environment                                                      bootstrap.py:1269
+           configuring container                                                      bootstrap.py:1277
+           starting container                                                         bootstrap.py:1287
+[09:33:07] detaching                                                                  bootstrap.py:1291
+```
+
+Vamos verificar o status
+
+```bash
+localstack status
+```
+
+Resposta do comando
+
+```bash
+┌─────────────────┬───────────────────────────────────────────────────────┐
+│ Runtime version │ 3.4.1.dev                                             │
+│ Docker image    │ tag: latest, id: 2e5eece2f1f5, 📆 2024-06-12T16:04:43 │
+│ Runtime status  │ ✔ running (name: "localstack-main", IP: 172.17.0.2)   │
+└─────────────────┴───────────────────────────────────────────────────────┘
+```
+
+Vamos verificar os logs
+
+```bash
+localstack logs    
+```
+
+Resposta do comando
+
+```bash
+LocalStack version: 3.4.1.dev
+LocalStack Docker container name: localstack-main
+LocalStack Docker container id: 8bacdc4c848a
+LocalStack Docker image sha: sha256:2e5eece2f1f55715d7fed4c2402acaba13260c80a1c53f5f21cdb08390c11ee0
+LocalStack build date: 2024-06-12
+LocalStack build git hash: 2b9cbc763
+
+2024-06-13T12:33:09.608  INFO --- [  MainThread] localstack.utils.bootstrap : Execution of "start_runtime_components" took 607.29ms
+Ready.
+```
+
+#### Vamos preparar as credenciais do aws cli no localstack
+
+Editar o arquivo `~/.aws/config`
+
+```bash
+[profile localstack]
+region=us-east-1
+output=json
+endpoint_url = http://localhost:4566
+```
+
+Editar o arquivo `~/.aws/credentials` 
+
+```bash
+[localstack]
+aws_access_key_id = giropops
+aws_secret_access_key = strigus
+```
+
+No caso da LocalStack conter qualquer ID e senha
+
+#### Vamos executar Comandos Básicos do S3
+
+- Listar Buckets
+Para listar todos os buckets em sua conta S3:
+
+```bash
+aws s3 ls --profile localstack --endpoint-url http://localhost:4566
+```
+
+
+Criar um Bucket
+Para criar um novo bucket (lembre-se de que o nome do bucket deve ser globalmente único):
+
+bash
+Copiar código
+aws s3 mb s3://nome-do-seu-bucket
+Excluir um Bucket
+Para excluir um bucket vazio:
+
+bash
+Copiar código
+aws s3 rb s3://nome-do-seu-bucket
+Listar Objetos em um Bucket
+Para listar os objetos dentro de um bucket:
+
+bash
+Copiar código
+aws s3 ls s3://nome-do-seu-bucket
+Fazer Upload de Arquivo
+Para fazer upload de um arquivo para um bucket:
+
+bash
+Copiar código
+aws s3 cp caminho/para/o/arquivo.ext s3://nome-do-seu-bucket/
 
 Em outro terminal vamos fazer o clone do repositorio.
 
@@ -127,6 +237,10 @@ cd terraform-101/terraform/main
 aws s3 ls --profile localstack --endpoint-url=http://localhost:4566
 
 ➜  localstack 
+
+➜  ~ localstack stop    
+container stopped: localstack-main
+➜  ~ 
 
 
 -------
