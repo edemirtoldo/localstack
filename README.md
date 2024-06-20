@@ -358,31 +358,31 @@ terraform apply --auto-approve
 
 Vamos consultar os dados do EC2 criado
 
-Descreve uma ou mais instâncias EC2.
+Detalhes de uma ou mais instâncias EC2.
 
 ```bash
 aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-instances
 ```
 
-Descreve um ou mais volumes EBS.
+Detalhes de um ou mais volumes EBS.
 
 ```bash
 aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-volumes
 ```
 
-Descreve as interfaces de rede EC2.
+Detalhes das interfaces de rede EC2.
 
 ```bash
 aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-network-interfaces
 ```
 
-Descreve as regiões disponíveis.
+Detalhes das regiões disponíveis.
 
 ```bash
 aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-regions
 ```
 
-Descreve os pares de chaves disponíveis.
+Detalhes dos pares de chaves disponíveis.
 
 ```bash
 aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-key-pairs
