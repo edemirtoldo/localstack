@@ -248,13 +248,13 @@ touch testes
 Copiar o arquivo `testes` para o bucket `s3://giropops-bucket`
 
 ```bash
-aws --profile localstack --endpoint-url http://localhost:4566 s3 cp testes s3://giropops-bucket
+aws s3 cp testes s3://giropops-bucket --profile localstack
 ```
 
 Vamos verificar se o arquivo foi copiado
 
 ```bash
-aws --profile localstack --endpoint-url http://localhost:4566 s3 ls s3://giropops-bucket
+aws s3 ls s3://giropops-bucket --profile localstack
 ```
 
 Resposta do comando:
@@ -266,7 +266,7 @@ Resposta do comando:
 **- Vamos remover o arquivo testes do bucket**
 
 ```bash
-aws --profile localstack --endpoint-url http://localhost:4566 s3 rm s3://giropops-bucket/testes
+aws s3 rm s3://giropops-bucket/testes --profile localstack
 ```
 
 Resposta do comando:
@@ -278,13 +278,13 @@ delete: s3://giropops-bucket/testes
 Verificando a exclusão do arquivo testes do bucket
 
 ```bash
-aws --profile localstack --endpoint-url http://localhost:4566 s3 ls s3://giropops-bucket
+aws s3 ls s3://giropops-bucket --profile localstack
 ```
 
 **- Vamos excluir o bucket s3://giropops-bucket**
 
 ```bash
-aws --profile localstack --endpoint-url http://localhost:4566 s3 rb s3://giropops-bucket
+aws s3 rb s3://giropops-bucket --profile localstack
 ```
 
 Resposta do comando:
@@ -375,31 +375,31 @@ Vamos consultar os dados do EC2 criado
 Detalhes de uma ou mais instâncias EC2.
 
 ```bash
-aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-instances
+aws ec2 describe-instances --profile localstack
 ```
 
 Detalhes de um ou mais volumes EBS.
 
 ```bash
-aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-volumes
+aws ec2 describe-volumes --profile localstack
 ```
 
 Detalhes das interfaces de rede EC2.
 
 ```bash
-aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-network-interfaces
+aws ec2 describe-network-interfaces --profile localstack
 ```
 
 Detalhes das regiões disponíveis.
 
 ```bash
-aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-regions
+aws ec2 describe-regions --profile localstack
 ```
 
 Detalhes dos pares de chaves disponíveis.
 
 ```bash
-aws --profile localstack --endpoint-url http://localhost:4566 ec2 describe-key-pairs
+aws ec2 describe-key-pairs --profile localstack
 ```
 
 ### Vamos destruir o terraform
