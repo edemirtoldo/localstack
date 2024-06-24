@@ -55,7 +55,7 @@ calstack
 ### Instalação
 
 
-- AWS CLI - [Documentação de Instalação](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+- AWS CLI - [Documentação de Instalação do AWS Cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
 - Terraform - [Documentação de instalação do Terraform](https://developer.hashicorp.com/terraform/install)
 
