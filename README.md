@@ -64,7 +64,7 @@ calstack
 - Guia básico de instalação para começar a usar o LocalStack em sua máquina local.
 [Documentação de Instalação do LocalStack](https://docs.localstack.cloud/getting-started/installation/)
 
-A maneira mais rápida de começar a usar o LocalStack é usando a CLI do LocalStack. Ele permite que você inicie o LocalStack a partir da linha de comando. Certifique-se de ter um dockerambiente de trabalho em sua máquina antes de prosseguir. Duvidas na instalação do `Docker` acesse: [Como instalar o Docker](https://docs.docker.com/engine/install/).
+A maneira mais rápida de começar a usar o LocalStack é usando a CLI do LocalStack. Ele permite que você inicie o LocalStack a partir da linha de comando. Certifique-se de ter um dockerambiente de trabalho em sua máquina antes de prosseguir.
 
 A CLI inicia e gerencia o contêiner do Docker LocalStack. Para métodos alternativos de gerenciamento do contêiner LocalStack, consulte nossas [instruções de instalação alternativas](https://docs.localstack.cloud/getting-started/installation/#alternatives).
 
@@ -214,32 +214,28 @@ No caso da LocalStack as credenciais de acesso podem conter qualquer ID e senha
 **- Criar um Bucket**
 
 ```bash
-aws --profile localstack --endpoint-url http://localhost:4566 s3 mb s3://giropops-bucket
+aws s3 mb s3://giropops-bucket --profile localstack
 ```
 
 O comando realiza a seguinte operação:
 
-- Utiliza o perfil de configuração `localstack` que foi definido no arquivo de configuração do AWS CLI. Este perfil contém credenciais e outras configurações que podem ser diferentes do perfil padrão.
-
-- Conecta-se ao endpoint `http://localhost:4566` em vez dos endpoints da AWS. Este endpoint é provavelmente uma instância do LocalStack ou outro emulador de serviços AWS rodando localmente, o que permite testar interações com a AWS sem usar os serviços reais na nuvem.
-
 - Executa o comando `s3 mb`, que cria um novo bucket no S3 com o nome `giropops-bucket`.
+
+- Utiliza o perfil de configuração `localstack` que foi definido no arquivo de configuração do AWS CLI. Este perfil contém credenciais e outras configurações que podem ser diferentes do perfil padrão.
 
 **- Listar Buckets**
 
 Para listar todos os buckets em sua conta S3:
 
 ```bash
-aws --profile localstack --endpoint-url http://localhost:4566 s3 ls
+aws s3 ls --profile localstack
 ```
 
 O comando realiza a seguinte operação:
 
-- Utiliza o perfil de configuração `localstack` que foi definido no arquivo de configuração do AWS CLI. Este perfil contém credenciais e outras configurações que podem ser diferentes do perfil padrão.
-
-- Conecta-se ao endpoint `http://localhost:4566` em vez dos endpoints da AWS. Este endpoint é provavelmente uma instância do LocalStack ou outro emulador de serviços AWS rodando localmente, o que permite testar interações com a AWS sem usar os serviços reais na nuvem.
-
 - Executa o comando `s3 ls`, que lista todos os buckets S3 disponíveis no endpoint especificado (neste caso, os buckets gerenciados pelo LocalStack).
+
+- Utiliza o perfil de configuração `localstack` que foi definido no arquivo de configuração do AWS CLI. Este perfil contém credenciais e outras configurações que podem ser diferentes do perfil padrão.
 
 **- Copiar arquivo para o bucket**
 
