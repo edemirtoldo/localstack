@@ -41,7 +41,7 @@ calstack
 
 ### Tutorial
 
-#### 📋 Pré-requisitos
+### 📋 Pré-requisitos
 
 **:pushpin: - AWS CLI** 
 
@@ -52,9 +52,7 @@ calstack
 **:pushpin: - Localstack**
 
 
-
-
-#### Instalação
+### Instalação
 
 
 - AWS CLI - [Documentação de Instalação](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
@@ -130,7 +128,7 @@ Advanced:
   state       (Beta) Export, restore, and reset LocalStack state.
 ```
 
-**Vamos iniciar o localstack**
+### Vamos iniciar o localstack
 
 ```bash
 localstack start -d
@@ -190,7 +188,7 @@ LocalStack build git hash: 2b9cbc763
 Ready.
 ```
 
-#### Vamos preparar as credenciais do aws cli no localstack
+### Vamos preparar as credenciais do aws cli no localstack
 
 Editar o arquivo `~/.aws/config`
 
@@ -211,7 +209,7 @@ aws_secret_access_key = strigus
 
 No caso da LocalStack as credenciais de acesso podem conter qualquer ID e senha
 
-#### Vamos executar Comandos Básicos do S3
+### Vamos executar Comandos Básicos do S3
 
 **- Criar um Bucket**
 
