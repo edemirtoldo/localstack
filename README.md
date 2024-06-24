@@ -41,10 +41,30 @@ calstack
 
 ### Tutorial
 
+#### 📋 Pré-requisitos
+
+**:pushpin: - AWS CLI** 
+
+**:pushpin: - Terraform**
+
+**:pushpin: - Docker**
+
+**:pushpin: - Localstack**
+
+
+
+
 #### Instalação
 
-Guia básico de instalação para começar a usar o LocalStack em sua máquina local.
-[Instalação](https://docs.localstack.cloud/getting-started/installation/)
+
+- AWS CLI - [Documentação de Instalação](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+- Terraform - [Documentação de instalação do Terraform](https://developer.hashicorp.com/terraform/install)
+
+- Docker -  [Documentação como instalar o Docker](https://docs.docker.com/engine/install/)
+
+- Guia básico de instalação para começar a usar o LocalStack em sua máquina local.
+[Documentação de Instalação do LocalStack](https://docs.localstack.cloud/getting-started/installation/)
 
 A maneira mais rápida de começar a usar o LocalStack é usando a CLI do LocalStack. Ele permite que você inicie o LocalStack a partir da linha de comando. Certifique-se de ter um dockerambiente de trabalho em sua máquina antes de prosseguir. Duvidas na instalação do `Docker` acesse: [Como instalar o Docker](https://docs.docker.com/engine/install/).
 
