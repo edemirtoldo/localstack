@@ -211,7 +211,7 @@ No caso da LocalStack as credenciais de acesso podem conter qualquer ID e senha
 
 ### Vamos executar Comandos Básicos do S3
 
-**- Criar um Bucket**
+:computer: **- Criar um Bucket**
 
 ```bash
 aws s3 mb s3://giropops-bucket --profile localstack
@@ -223,7 +223,7 @@ O comando realiza a seguinte operação:
 
 - Utiliza o perfil de configuração `localstack` que foi definido no arquivo de configuração do AWS CLI. Este perfil contém credenciais e outras configurações que podem ser diferentes do perfil padrão.
 
-**- Listar Buckets**
+:computer: **- Listar Buckets**
 
 Para listar todos os buckets em sua conta S3:
 
@@ -237,7 +237,7 @@ O comando realiza a seguinte operação:
 
 - Utiliza o perfil de configuração `localstack` que foi definido no arquivo de configuração do AWS CLI. Este perfil contém credenciais e outras configurações que podem ser diferentes do perfil padrão.
 
-**- Copiar arquivo para o bucket**
+:computer: **- Copiar arquivo para o bucket**
 
 Criar o arquivo
 
@@ -245,13 +245,13 @@ Criar o arquivo
 touch testes
 ```
 
-Copiar o arquivo `testes` para o bucket `s3://giropops-bucket`
+:computer: **- Copiar o arquivo `testes` para o bucket `s3://giropops-bucket`**
 
 ```bash
 aws s3 cp testes s3://giropops-bucket --profile localstack
 ```
 
-Vamos verificar se o arquivo foi copiado
+:computer: **- Vamos verificar se o arquivo foi copiado**
 
 ```bash
 aws s3 ls s3://giropops-bucket --profile localstack
@@ -263,7 +263,7 @@ Resposta do comando:
 2024-06-13 10:29:16          0 testes
 ```
 
-**- Vamos remover o arquivo testes do bucket**
+:computer: **- Vamos remover o arquivo testes do bucket**
 
 ```bash
 aws s3 rm s3://giropops-bucket/testes --profile localstack
@@ -275,13 +275,13 @@ Resposta do comando:
 delete: s3://giropops-bucket/testes
 ```
 
-Verificando a exclusão do arquivo testes do bucket
+:computer: **- Verificando a exclusão do arquivo testes do bucket**
 
 ```bash
 aws s3 ls s3://giropops-bucket --profile localstack
 ```
 
-**- Vamos excluir o bucket s3://giropops-bucket**
+:computer: **- Vamos excluir o bucket s3://giropops-bucket**
 
 ```bash
 aws s3 rb s3://giropops-bucket --profile localstack
@@ -362,7 +362,7 @@ provider "aws" {
 }
 ```
 
-Vamos rodar
+### Vamos rodar o Terraform
 
 ```bash
 terraform init
