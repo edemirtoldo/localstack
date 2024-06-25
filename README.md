@@ -128,7 +128,7 @@ Advanced:
   state       (Beta) Export, restore, and reset LocalStack state.
 ```
 
-### Vamos iniciar o localstack
+### Vamos iniciar o Localstack em modo daemon
 
 ```bash
 localstack start -d
