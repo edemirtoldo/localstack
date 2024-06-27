@@ -41,16 +41,14 @@ calstack
 
 ### Tutorial
 
-### 📋 Pré-requisitos
+### 📋 Requisitos
 
-**:pushpin: - AWS CLI** 
-
-**:pushpin: - Terraform**
-
-**:pushpin: - Docker**
-
-**:pushpin: - Localstack**
-
+| Name | Version |
+|------|---------|
+| AWS CLI | 2.17.0 |
+| Terraform  | 1.8.5 |
+| Docker  | 20.0.1 |
+| Localstack  | 3.4.0 |
 
 ### Instalação
 
