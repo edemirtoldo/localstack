@@ -19,7 +19,7 @@
 ### Benefícios do Uso do LocalStack
 
 - **Custo Reduzido:** Evita custos associados ao uso de serviços reais da AWS durante a fase de desenvolvimento e testes.
-calstack
+  calstack
 
 - **Velocidade:** Testes e desenvolvimentos podem ser realizados mais rapidamente sem a latência de rede associada ao acesso à AWS.
 
@@ -43,40 +43,39 @@ calstack
 
 ### 📋 Requisitos
 
-| Name | Version |
-|------|---------|
-| AWS CLI | 2.17.0 |
-| Terraform  | 1.8.5 |
-| Docker  | 20.0.1 |
-| Localstack  | 3.4.0 |
+| Name       | Version |
+| ---------- | ------- |
+| AWS CLI    | 2.17.0  |
+| Terraform  | 1.12.2  |
+| Docker     | 28.3.0  |
+| Localstack | 4.5.0   |
 
 ### Instalação
-
 
 - AWS CLI - [Documentação de Instalação do AWS Cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
 - Terraform - [Documentação de instalação do Terraform](https://developer.hashicorp.com/terraform/install)
 
-- Docker -  [Documentação como instalar o Docker](https://docs.docker.com/engine/install/)
+- Docker - [Documentação como instalar o Docker](https://docs.docker.com/engine/install/)
 
 - Guia básico de instalação para começar a usar o LocalStack em sua máquina local.
-[Documentação de Instalação do LocalStack](https://docs.localstack.cloud/getting-started/installation/)
+  [Documentação de Instalação do LocalStack](https://docs.localstack.cloud/getting-started/installation/)
 
 A maneira mais rápida de começar a usar o LocalStack é usando a CLI do LocalStack. Ele permite que você inicie o LocalStack a partir da linha de comando. Certifique-se de ter um dockerambiente de trabalho em sua máquina antes de prosseguir.
 
 A CLI inicia e gerencia o contêiner do Docker LocalStack. Para métodos alternativos de gerenciamento do contêiner LocalStack, consulte nossas [instruções de instalação alternativas](https://docs.localstack.cloud/getting-started/installation/#alternatives).
 
-Vamos baixar o binario da localstack para uso no Linux.
+Vamos baixar o binario da Localstack versão 4.5.0 para uso no Linux.
 
 ```bash
-curl -Lo localstack-cli-3.4.0-linux-amd64-onefile.tar.gz \
-    https://github.com/localstack/localstack-cli/releases/download/v3.4.0/localstack-cli-3.4.0-linux-amd64-onefile.tar.gz
+curl --output localstack-cli-4.5.0-linux-amd64-onefile.tar.gz \
+    --location https://github.com/localstack/localstack-cli/releases/download/v4.5.0/localstack-cli-4.5.0-linux-amd64-onefile.tar.gz
 ```
 
 Vamos descompactar o pacote.
 
 ```bash
-tar -xvzf localstack-cli-3.4.0-linux-amd64-onefile.tar.gz
+tar -xvzf localstack-cli-4.5.0-linux-amd64-onefile.tar.gz
 ```
 
 Vamos mover o pacote.
@@ -131,6 +130,7 @@ Advanced:
 ```bash
 localstack start -d
 ```
+
 Resposta do comando
 
 ```bash
@@ -140,14 +140,15 @@ Resposta do comando
   / /___/ /_/ / /__/ /_/ / /___/ / /_/ /_/ / /__/ ,<
  /_____/\____/\___/\__,_/_//____/\__/\__,_/\___/_/|_|
 
- 💻 LocalStack CLI 3.4.0
- 👤 Profile: default
+- LocalStack CLI: 4.5.0
+- Profile: default
+- App: https://app.localstack.cloud
 
-[09:33:05] starting LocalStack in Docker mode 🐳                                      localstack.py:495
-           preparing environment                                                      bootstrap.py:1269
-           configuring container                                                      bootstrap.py:1277
-           starting container                                                         bootstrap.py:1287
-[09:33:07] detaching                                                                  bootstrap.py:1291
+[13:11:13] starting LocalStack in Docker mode 🐳                                                                       localstack.py:532
+           preparing environment                                                                                       bootstrap.py:1307
+           configuring container                                                                                       bootstrap.py:1315
+           starting container                                                                                          bootstrap.py:1325
+[13:11:15] detaching                                                                                                   bootstrap.py:1329
 ```
 
 Vamos verificar o status
@@ -197,7 +198,7 @@ output=json
 endpoint_url = http://localhost:4566
 ```
 
-Editar o arquivo `~/.aws/credentials` 
+Editar o arquivo `~/.aws/credentials`
 
 ```bash
 [localstack]
@@ -307,14 +308,26 @@ Vamos acessar o diretorio
 cd terraform-101/terraform/main
 ```
 
-Vamos corrigir o arquivo `main.tf`
+Vamos corrigir o arquivo `variables.tf` modules/subnet/variables.tf
 
 O arquivo está com o ip do vpc errado deve ficar como esta abaixo:
 
 ```bash
-module "vpc" {
-  source         = "./modules/vpc"
-  vpc_cidr_block = "10.0.0.0/16"
+variable "vpc_id" {
+  description = "The VPC ID where subnets will be created"
+  type        = string
+}
+
+variable "public_cidr_block" {
+  description = "The CIDR block for the public subnet"
+  type        = string
+  default = "10.10.1.0/24"
+}
+
+variable "private_cidr_block" {
+  description = "The CIDR block for the private subnet"
+  type        = string
+  default = "10.10.2.0/24"
 }
 ```
 
