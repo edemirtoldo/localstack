@@ -310,7 +310,7 @@ cd terraform-101/terraform/main
 
 Vamos corrigir o arquivo `variables.tf` modules/subnet/variables.tf
 
-O arquivo está com o ip do vpc errado deve ficar como esta abaixo:
+O arquivo está com os ips do modulo de subnets está errado deve ficar como esta abaixo:
 
 ```bash
 variable "vpc_id" {
